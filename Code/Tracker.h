@@ -10,11 +10,6 @@
 #include "User.h"
 #include "date_utils.h"
 
-// Coordinates logging, reporting, suggestions and saving/loading.
-//
-// File format (plain text):
-//   USER|Alex
-//   HABIT|Exercise|2026-10-10,2026-10-11
 class Tracker {
 public:
     Tracker(User user, std::string filePath)
@@ -23,14 +18,14 @@ public:
     User& user() { return user_; }
     const User& user() const { return user_; }
 
-    // ---------- Logging ----------
+    //  Logging 
     bool log(size_t habitIndex, const std::string& day) {
         if (habitIndex >= user_.habits().size()) return false;
         user_.habits()[habitIndex].markDone(day);
         return true;
     }
 
-    // ---------- Reporting ----------
+    //  Reporting 
     void printReport(int windowDays = 7) const {
         const std::string today = date::today();
         std::cout << "\n=== Habit Report for " << user_.name() << " (" << today << ") ===\n";
@@ -84,7 +79,7 @@ public:
                   << windowDays << " days).\n";
     }
 
-    // ---------- Persistence ----------
+    // Persistence 
     bool save() const {
         std::ofstream out(filePath_);
         if (!out) return false;
