@@ -1,13 +1,9 @@
-// Habit Tracker - interactive console app
-// Build: g++ -std=c++17 main.cpp -o habit_tracker
-// Run:   .\habit_tracker   (Windows)   or   ./habit_tracker   (Linux/Mac)
-
 #include <iostream>
 #include <string>
 
 #include "Tracker.h"
 
-// ---------- Input helpers ----------
+// Input helpers
 static std::string readLine(const std::string& prompt) {
     std::cout << prompt;
     std::string s;
@@ -63,7 +59,7 @@ static void printMenu() {
               << "0. Save and exit\n";
 }
 
-// ---------- Menu actions ----------
+//  Menu actions 
 static void addHabit(Tracker& tracker) {
     std::string name = readLine("Habit name: ");
     if (tracker.user().addHabit(name))
@@ -109,7 +105,7 @@ static void deleteHabit(Tracker& tracker) {
     }
 }
 
-// ---------- Main ----------
+//  Main 
 int main() {
     Tracker tracker(User(), "habits.txt");
 
